@@ -1,0 +1,15 @@
+{
+    "name": "ghost.vn/mvc",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "padi-dev-hoangnd2",
+            "email": "hoangnd2@paditech.com"
+        }
+    ],
+    "require": {}
+}
