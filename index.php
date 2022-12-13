@@ -14,12 +14,14 @@ use app\controllers\SiteController;
 
     $app->router->post('/contact',[SiteController::class,'handleContact']);
 
-    $app->router->get('/login',[AuthController::class,'login']);
-    $app->router->post('/login',[AuthController::class,'login']);
+    $app->router->get('/login',[SiteController::class,'login']);
+    $app->router->post('/login',[AuthController::class,'handleLogin']);
 
-    $app->router->get('/register',[AuthController::class,'register']);
+    $app->router->get('/register',[SiteController::class,'register']);
 
-    $app->router->post('/register',[AuthController::class,'register']);
+    $app->router->post('/register',[AuthController::class,'handleRegister']);
+
+    $app->router->get('/profile',[SiteController::class,'profile']);
 
 
     $app->run();
