@@ -42,7 +42,7 @@
         </div>
         
         <div class="box">
-        <form  method="" role="form" >
+        <form  method="post" role="form" >
         <h1>Login</h1>
         <div class="sub-title">Welcome back. Login to start working</div>
     
@@ -77,6 +77,9 @@
 
         </div>
         
+        <div class = "submit">
+        <button type="submit" class="button" id="form-submit">Log in to start working</button>
+        </div>
         
        
         <div class="footer">
@@ -86,9 +89,7 @@
         </div>
 
     </form>
-    <div class = "submit">
-        <button type="submit" class="button" id="form-submit">Log in to start working</button>
-        </div>
+    
         </div>
     
     </div>

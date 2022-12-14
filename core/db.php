@@ -7,7 +7,7 @@ class DB {
     private $host = 'localhost';
     private $user = 'root';
     private $pass = '';
-    private $dbname = 'test_db';
+    private $dbname = 'testdb';
 
     //Will be the PDO object
     private $dbh;
@@ -33,7 +33,7 @@ class DB {
 
     //Prepare statement with query
     public function query($sql){
-        $this->stmt = $this->dbh->prepare($sql);
+            $this->stmt = $this->dbh->prepare($sql);
     }
 
     //Bind values, to prepared statement using named parameters

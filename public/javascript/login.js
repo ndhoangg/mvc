@@ -10,21 +10,20 @@ $(document).ready(function () {
           password: $("input[name='password']").val(),
       //    remember_me: $("input[name='rememberMe']").val()
         },
-        dataType: "form-data",
+        dataType: "json",
         beforeSend: function () {
-          // $("#loading-wrap").show();
+           $("#loading-wrap").show();
         },
         success: function (response) {
-          // $("#loading-wrap").fadeOut("slow");
-          console.log("HERE")
+           $("#loading-wrap").fadeOut("slow");
           if (!response.success)
           {
             $("#alert-content").text(response.message);
             $("#alert-wrap").show();
           }
-        //   else setTimeout(function() {
-        //       window.location.replace("/account");
-        //   }, 1500)
+          else setTimeout(function() {
+              window.location.replace("/profile");
+          }, 1500)
         }
       });
     });

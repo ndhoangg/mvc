@@ -18,16 +18,18 @@ class AuthController extends Controller{
     public function handleLogin(Request $request){
        $data = $request->getBody();
        $user = $this->userModel->findUserByEmail($data['email']);
-       
-       if(!$user){
-        return json_encode(["success"=>false,"message"=>"Email Invalid"]);
+        
+       if(empty($user)){
+           echo json_encode(["success"=>false,"message"=>"Email Invalid"]);
+        
        }
-       elseif($data['password'] != $user->password){
-        return json_encode(["success"=>false,"message"=>"Wrong Password!"]);
+       elseif($data["password"] != $user->password){
+        echo json_encode(["success"=>false,"message"=>"Wrong Password!"]);
         }
         else {
-            $_SESSION['email'] = $user->email;
-            return $this->render('profile',$user);
+        //     $_SESSION['email'] = $user->email;
+        //    return $this->render('profile',$user);
+        echo json_encode(["success"=>true]);
         }
           
        }
