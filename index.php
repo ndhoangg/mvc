@@ -17,10 +17,10 @@ use app\controllers\SiteController;
     $app->router->get('/login',[SiteController::class,'login']);
     $app->router->post('/login',[AuthController::class,'handleLogin']);
 
+    $app->router->post('/logout',[AuthController::class,'logout']);
+
     $app->router->get('/register',[SiteController::class,'register']);
-
     $app->router->post('/register',[AuthController::class,'handleRegister']);
-
     $app->router->get('/profile',[SiteController::class,'profile']);
 
 

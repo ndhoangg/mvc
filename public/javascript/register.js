@@ -1,14 +1,16 @@
 
 $(document).ready(function () {
-    $("#form-submit").on("click", function (event) {
+    $("#submit-button").on("click", function (event) {
       event.preventDefault();
       $.ajax({
         type: "POST",
-        url: "/login",
+        url: "/register",
         data: {
           email: $("input[name='email']").val(),
           password: $("input[name='password']").val(),
-      //    remember_me: $("input[name='rememberMe']").val()
+          passwordconfirm: $("input[name='passwordconfirm']").val(),
+          name: $("input[name='name']").val()
+
         },
          dataType: "json",
         beforeSend: function () {
@@ -22,8 +24,8 @@ $(document).ready(function () {
             $("#alert-wrap").show();
           }
           else setTimeout(function() {
-              window.location.replace("/profile");
-          }, 1500)
+              window.location.replace("/login");
+          }, 800)
         }
       });
     });

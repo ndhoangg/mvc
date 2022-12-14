@@ -10,7 +10,7 @@ class User {
 
 
       //Find user by email or username
-      public function findUserByEmail($email){
+      public  function findUserByEmail($email){
         $this->db->query('SELECT * FROM users WHERE email = :email');
         $this->db->bind(':email', $email);
 
@@ -23,6 +23,7 @@ class User {
             return false;
         }
     }
+        
 
     //Register User
     public function register($data){
@@ -34,11 +35,8 @@ class User {
         $this->db->bind(':password', $data['password']);
 
         //Execute
-        if($this->db->execute()){
-            return true;
-        }else{
-            return false;
-        }
+        $this->db->execute();
+        
     }
 
     //Login user

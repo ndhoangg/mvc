@@ -7,7 +7,7 @@ class DB {
     private $host = 'localhost';
     private $user = 'root';
     private $pass = '';
-    private $dbname = 'testdb';
+    private $dbname = 'test_db';
 
     //Will be the PDO object
     private $dbh;

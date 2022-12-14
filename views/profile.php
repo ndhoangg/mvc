@@ -4,18 +4,38 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">\
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 	<link rel="stylesheet" href="../public/css/profile.css">
 
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="../public/javascript/logout.js"></script>
 	<title>Profile</title>
 </head>
 <body>
+	<?php
+		include_once "./public/data/initData.php";
+		
+		if(!isset($_SESSION['email'])){
+			header("Location: localhost:8080/login");
+		}
+		
+		
+
+	?>
+	<div id='loading-wrap' style='position:fixed; height:100%; width:100%; overflow:hidden; top:0; left:0; display:none'>
+        <div id='loading-message'>
+            <div class='loader'>
+            </div>
+            <div class='message'></div>
+        </div>
+    </div>
 	<div class="all-page">
 		<div class="left-menu">
+
 			<div class="avatar">
-				<img src="<?= $imageURL?>" alt="" class="avatar-image" >
+				<img src="<?= ($avatar)?($imageURL):$imageDefault?>" alt="" class="avatar-image" >
 			</div>
 
 			<div class="item item1">Account</div>
@@ -24,6 +44,7 @@
 			<div class="item item4">Group</div>
 			<div class="item item5">Guest</div>
 			<div class="item item6">App</div>
+			<div class= "item item7 more" id="logout-button">Log Out</div>
 
 		</div>
 		<div class="right-menu">
@@ -66,7 +87,7 @@
 	<div class = "header">
 	<div class="navbar">
 		<div class="left">
-		<a href="logout.php"><i class="fas fa-arrow-left"></i></a>
+		<a href=""><i class="fas fa-arrow-left"></i></a>
 		<div class = "infor">
 			<div class="label">
 			Account
@@ -91,7 +112,7 @@
 		<div class="profile">
 			<div class="main">
 				<form action="" id="imageForm">
-				<img src="<?php echo $imageURL; ?>" alt=""  class = "avatar-image">
+				<img src="<?= ($avatar)?($imageURL):$imageDefault?>" alt=""  class = "avatar-image">
 				<input type="file" onchange="chooseFile(this)" id="imageFile">
 			   
 				</form>

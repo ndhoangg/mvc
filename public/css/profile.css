@@ -367,9 +367,11 @@ body{
     min-height: 1450px;
     width: 100%;
     z-index: 1;
+    margin-top: -18px !important;
 }
 
 .left-menu{
+
     flex: 1;
     order: 1;
     background-color:#21272d;
@@ -377,6 +379,7 @@ body{
 .super-main{
     flex: 20;
     order: 2;
+    margin-left: 80px;
 }
 .right-menu{
     flex: 3;
@@ -389,7 +392,6 @@ body{
 .main-body{
     display: flex;
     justify-content: center;
-    
 }
 
 .left-menu .avatar{
@@ -408,6 +410,9 @@ body{
 .left-menu{
     display: flex;
     flex-direction: column;
+    position: fixed;
+    height: 100%;
+    width: 75px;
 }
 
 .left-menu .item{
@@ -453,6 +458,18 @@ body{
     font-family: FontAwesome;
 
 }
+
+.left-menu .item7::before{
+    content: "\f011";
+    font-family: FontAwesome;
+
+}
+
+.left-menu .item7{
+    position:absolute;
+    bottom: 0;
+}
+
 .left-menu .item1{
     background-color: #000;
     padding-top: 8px;
@@ -600,6 +617,14 @@ body{
     top: 0;
     left: 0;
     opacity: 0  ;
+}
+
+.more {
+    background:none;
+    border:none;
+    color:#FFF;
+    font-family:Verdana, Geneva, sans-serif;
+    cursor:pointer;
 }
 
 
