@@ -185,3 +185,11 @@ body{
     font-family: arial;
     font-size: 30px;
 }
+
+input:focus
+{
+    border: 0.5px solid #3ca765;
+    box-shadow: 0 0 2px #0dc25e;
+    outline-offset: 0px;
+    outline: none;
+}

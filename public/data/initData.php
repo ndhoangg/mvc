@@ -11,7 +11,7 @@ if(isset($_SESSION['email'])){
         $$key = $value;    
      }
      $imageDefault = "https://static-gcdn.basecdn.net/account/image/background.png";
-     $imageURL = "./public/upload/".$avatar;
+     $imageURL = "./public/uploads/".$avatar;
     
 }
 

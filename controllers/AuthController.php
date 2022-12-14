@@ -15,10 +15,10 @@ class AuthController extends Controller{
     }
 
     
+    //
     public function handleLogin(Request $request){
        $data = $request->getBody();
        $user = $this->userModel->findUserByEmail($data['email']);
-        
        if(empty($user)){
            echo json_encode(["success"=>false,"message"=>"Email Invalid"]);
         
@@ -28,6 +28,18 @@ class AuthController extends Controller{
         }
         else {
             $_SESSION['email'] = $user->email;
+            if(($data['remember'])){
+                setcookie("email",$data['email'],time() + 60*60*24*7);
+                setcookie("password",$data['password'],time() + 60*60*24*7);
+                setcookie("check","checked",time() + 60*60*24*7);
+       
+          // $check = "checked";
+               }
+           else {
+               setcookie("email",$data['email'],time() - 60*60*24*7);
+               setcookie("password",$data['password'],time() - 60*60*24*7);
+               setcookie("check","checked",time() - 60*60*24*7);
+            }
           echo json_encode(["success"=>true]);
          
         }
@@ -35,16 +47,17 @@ class AuthController extends Controller{
        }
     
 
+    //
     public function logout(){
-
-     
-    
         if(isset($_POST['action'])  && $_POST['action'] == "logout" ){
             
             //$_SESSION = array();
             unset($_SESSION['email']);
         }
-}
+    }
+
+
+    //
     public function handleRegister(Request $request){
         $data = $request->getBody();
         $user = $this->userModel->findUserByEmail($data['email']);
@@ -65,14 +78,37 @@ class AuthController extends Controller{
             echo json_encode(["success"=>false,"message"=>"Wrong Repeat Password"]);
         }
         else{
+            $restname = "";
+            $namearr = explode(" ",$data['name']);
+                $firstname = $namearr[count($namearr) - 1];
+                for($i = 0 ; $i < count($namearr)-1; $i++){
+                    $newn = " ";
+                    $newn.=$namearr[$i];
+                    $restname.=$newn;
+                }
+                $lastname = $namearr[0];
+                $username = '@'.strtolower($firstname).strtolower($lastname);
+                $restname = trim($restname);
+                $data['first_name'] = $firstname;
+                $data['last_name'] = $restname;
+                $data['user_name'] = $username;
             $this->userModel->register($data);
             echo json_encode(["success"=>true]);
         }
-        
-
+    } 
+    public function update(Request $request){
+       
+       
+        $data = $request->getBody();
+        $data['avatar'] = $_FILES["uploadfile"]["name"];
+        $targetFilePath = SITE_ROOT.'/public/uploads/'.$_FILES["uploadfile"]["name"];
+        move_uploaded_file($_FILES["uploadfile"]["tmp_name"], $targetFilePath);
+        $this->userModel->update($data);
+        echo json_encode(["success"=>true]);
+    }
         
 
     }
-}
+
 
 ?>

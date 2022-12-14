@@ -70,10 +70,10 @@
             
         <div class="remmember-me">
         
-            <input <?= isset($_COOKIE['check'])?$_COOKIE['check']:"" ?> type="checkbox" name="remember" id="" value = "1">
+            <input  type="checkbox" name="remember" id="" value = "<?= isset($_COOKIE['check'])?true:""?>">
             <label for="remember">Keep me logged in</label>
             
-            <a href="register.php">Đăng ký</a>
+            <a href="register">Đăng ký</a>
 
         </div>
         
