@@ -8,7 +8,7 @@ $(document).ready(function () {
         data: {
           email: $("input[name='email']").val(),
           password: $("input[name='password']").val(),
-      //    remember_me: $("input[name='rememberMe']").val()
+          remember: $("input[name='remember']").val()
         },
          dataType: "json",
         beforeSend: function () {

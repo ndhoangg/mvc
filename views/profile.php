@@ -11,6 +11,9 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="../public/javascript/logout.js"></script>
+	<script src="../public/javascript/update.js"></script>
+	<script src="../public/javascript/handle.js"></script>
+	
 	<title>Profile</title>
 </head>
 <body>
@@ -94,7 +97,7 @@
 	
 			</div>
 			
-			<div class = "title"><?= $name?> <?= ($job_title)?(" · ".$job_title):"" ?></div>
+			<div class = "title"><?= $last_name." ".$first_name?> <?= ($job_title)?(" · ".$job_title):"" ?></div>
 			
 			
 		</div>
@@ -118,7 +121,7 @@
 				</form>
 				
 				<div class="text">
-					<div class="title"><?= $name?></div>
+					<div class="title"><?= $last_name." ".$first_name?></div>
 					<div class="subtitle"><?= ($job_title)?$job_title:"Chưa cập nhật chức danh"?></div>
 					<div class="infor">
 					   <div class="sub-title">Email Address</div>
@@ -195,7 +198,7 @@
 	</div>
 	<div class="update-form" id = "fix-box">
 	<div class="form-table">
-	<form action="update.php" method = "POST" enctype="multipart/form-data"> 
+	<form action="" method = "POST" enctype="multipart/form-data" id="formData"> 
 		<div class="form-header">
 		<div class="header-title">Upadate Profile</div>
 		<div class = "icon-button"><i class="fa-solid fa-x more" onclick="close1()"></i></div>
@@ -257,11 +260,11 @@
 			</div>
 			<div class="row">
 				<div class="label">Avatar
-					<div class="subtitle">Avatar</div>
+					<div class="subtitle" >Avatar</div>
 
 				</div>
 				
-				<input type="file" id="image-File" name="uploadfile">
+				<input type="file" id="image-File" name="uploadfile" <?= ($avatar)?$avatar:""?>>
 				
 
 			</div>
@@ -300,7 +303,7 @@
 				Discard
 			</div>
 			<div class="right-button">
-				<button class = "more" type="submit" >Update</button>
+				<button class = "more" type="submit" id="update-button">Update</button>
 			</div>
 		</div>
 		</div>
@@ -309,27 +312,5 @@
 </form>
 
 	</div>
-  <script>
-	function open1(){
-	 document.querySelector('.update-form').style.display = 'block';  
-	}
-	function close1(){
-		document.querySelector('.update-form').style.display = 'none';  
-
-	}
-
-	function chooseFile(fileInput){
-		if(fileInput.files && fileInput.files[0]){
-			var reader = new FileReader();
-			reader.onload = function(e){
-				var data1 = document.querySelectorAll('.avatar-image')[0];
-				var data2 = document.querySelectorAll('.avatar-image')[1];
-				data1.src = e.target.result;
-				data2.src = e.target.result;
-			}
-			reader.readAsDataURL(fileInput.files[0]);
-		}
-	}
-  </script>
 </body>
 </html>
