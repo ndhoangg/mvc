@@ -68,10 +68,10 @@ class AuthController extends Controller{
             $this->userModel->register($data);
             echo json_encode(["success"=>true]);
         }
-        
+    }
 
+    public function update(){
         
-
     }
 }
 
