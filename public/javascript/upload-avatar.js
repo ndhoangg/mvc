@@ -1,15 +1,13 @@
-
 $(document).ready(function () {
-    $("#update-button").on("click", function (event) {
+    $(".uniqueAvatar").on("change", function (event) {
       event.preventDefault();
-      var formData = new FormData($('#formData')[0]);
+      var formData = new FormData($('#imageForm')[0]);
       $.ajax({
         type: "POST",
-        url: "/update",
+        url: "/updateavatar",
         processData: false,
         contentType: false,
-        data:  formData,
-        
+        data: formData,
         // {
         //   first_name: $("input[name='first_name']").val(),
         //   last_name: $("input[name='last_name']").val(),
@@ -30,6 +28,3 @@ $(document).ready(function () {
       });
     });
   });
-  
-  
-  

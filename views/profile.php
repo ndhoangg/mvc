@@ -13,6 +13,7 @@
 	<script src="../public/javascript/logout.js"></script>
 	<script src="../public/javascript/update.js"></script>
 	<script src="../public/javascript/handle.js"></script>
+	<script src="../public/javascript/upload-avatar.js"></script>
 	
 	<title>Profile</title>
 </head>
@@ -114,9 +115,9 @@
   <div class="container">
 		<div class="profile">
 			<div class="main">
-				<form action="" id="imageForm">
+				<form action="" id="imageForm" method="post">
 				<img src="<?= ($avatar)?($imageURL):$imageDefault?>" alt=""  class = "avatar-image">
-				<input type="file" onchange="chooseFile(this)" id="imageFile">
+				<input type="file"  id="imageFile" class = "uniqueAvatar" name="image">
 			   
 				</form>
 				

@@ -85,6 +85,13 @@ class User {
         $this->db->execute();
        
     }
+
+    public function uploadImage($data){
+        $this->db->query('UPDATE users SET avatar=:avatar WHERE email=:email');
+        $this->db->bind(':avatar', $data['avatar']);
+        $this->db->bind(':email', $_SESSION['email']);
+        $this->db->execute();
+    }
    
 
     

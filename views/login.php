@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../public/css/login.css">
     <link rel="stylesheet" href="../public/css/alert.css">
     <link rel="stylesheet" href="../public/css/loading.css">
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../public/javascript/login.js"></script>
     <title>Login</title>
@@ -73,7 +75,7 @@
             <input  type="checkbox" name="remember" id="" value = "<?= isset($_COOKIE['check'])?true:""?>">
             <label for="remember">Keep me logged in</label>
             
-            <a href="register">Đăng ký</a>
+            <!-- <a href="register">Đăng ký</a> -->
 
         </div>
         
@@ -81,6 +83,11 @@
         <button type="submit" class="button" id="form-submit">Log in to start working</button>
         </div>
         
+        
+
+        <div class = "submit">
+        <a href="register" >Register</a>
+        </div>
        
         <div class="footer">
 

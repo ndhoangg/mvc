@@ -27,21 +27,8 @@ class AuthController extends Controller{
         echo json_encode(["success"=>false,"message"=>"Wrong Password!"]);
         }
         else {
-            $_SESSION['email'] = $user->email;
-            if(($data['remember'])){
-                setcookie("email",$data['email'],time() + 60*60*24*7);
-                setcookie("password",$data['password'],time() + 60*60*24*7);
-                setcookie("check","checked",time() + 60*60*24*7);
-       
-          // $check = "checked";
-               }
-           else {
-               setcookie("email",$data['email'],time() - 60*60*24*7);
-               setcookie("password",$data['password'],time() - 60*60*24*7);
-               setcookie("check","checked",time() - 60*60*24*7);
-            }
-          echo json_encode(["success"=>true]);
-         
+            $_SESSION['email'] = $user->email;         
+          echo json_encode(["success"=>true]);   
         }
           
        }
@@ -95,9 +82,29 @@ class AuthController extends Controller{
             $this->userModel->register($data);
             echo json_encode(["success"=>true]);
         }
+    } 
+    public function update(Request $request){
+       
+       
+        $data = $request->getBody();
+        
+        $data['avatar'] = $_FILES["uploadfile"]["name"];
+        $targetFilePath = SITE_ROOT.'/public/uploads/'.$_FILES["uploadfile"]["name"];
+        move_uploaded_file($_FILES["uploadfile"]["tmp_name"], $targetFilePath);
+        $this->userModel->update($data);
+        echo json_encode(["success"=>true]);
+    }
+    public function updateAvatar(Request $request){
+        $data = $request->getBody();
+    
+        $data['avatar'] = $_FILES["image"]["name"];
+        $targetFilePath = SITE_ROOT.'/public/uploads/'.$_FILES["image"]["name"];
+        move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath);
+        $this->userModel->uploadImage($data);
+        echo json_encode(["success"=>true]);
+    }
         
 
-        
     }
 
 
