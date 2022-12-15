@@ -19,14 +19,8 @@
 </head>
 <body>
 	<?php
-		include_once "./public/data/initData.php";
-		
-		if(!isset($_SESSION['email'])){
-			header("Location: localhost:8080/login");
-		}
-		
-		
-
+		include_once "./models/data/initData.php";
+	
 	?>
 	<div id='loading-wrap' style='position:fixed; height:100%; width:100%; overflow:hidden; top:0; left:0; display:none'>
         <div id='loading-message'>

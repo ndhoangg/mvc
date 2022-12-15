@@ -2,7 +2,6 @@
 
 use app\models\User;
 
-session_start();
 if(isset($_SESSION['email'])){
     $userModel = new User;
 

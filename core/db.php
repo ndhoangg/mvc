@@ -4,6 +4,8 @@
     use PDO;
     use PDOException;
 class DB {
+
+
     private $host = 'localhost';
     private $user = 'root';
     private $pass = '';
@@ -13,6 +15,17 @@ class DB {
     private $dbh;
     private $stmt;
     private $error;
+
+    private static $instance = NULL;
+
+    public static function getInstance(){
+        if(static::$instance){
+            return static::$instance;
+        }
+
+        static::$instance = new static;
+        return static::$instance;
+    }
 
     public function __construct(){
         //Set DSN

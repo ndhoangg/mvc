@@ -104,7 +104,7 @@
    
 
     <div class="banner">
-           <img src="https://static-gcdn.basecdn.net/account/image/background.png" alt="">
+           <img src="../public/image/background.png" alt="">
     </div>
     </div>
    
