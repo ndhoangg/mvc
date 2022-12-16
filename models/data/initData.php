@@ -11,7 +11,7 @@ if(isset($_SESSION['email'])){
         $$key = $value;    
      }
      $imageDefault = Router::getAsset("image/1.jpg");
-     $imageURL = "./public/uploads/".$avatar;
+     $imageURL = Router::getAsset('uploads/').$avatar;
     
 }
 

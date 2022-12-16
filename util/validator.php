@@ -40,7 +40,7 @@ class Validator{
         );
     }    // Validate image file dimension
     else {
-        $target = SITE_ROOT.'/public/uploads/' .$name;
+        $target = SITE_ROOT.'/uploads/' .$name;
         if (move_uploaded_file($dir, $target)) {
             move_uploaded_file($dir, $target);
              return $response = array(
