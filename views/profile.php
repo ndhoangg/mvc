@@ -1,4 +1,6 @@
-
+<?php
+use app\core\Router;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,22 +8,23 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">\
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-	<link rel="stylesheet" href="../public/css/profile.css">
-	<link rel="stylesheet" href="../public/css/alert.css">
-    <link rel="stylesheet" href="../public/css/loading.css">
+
+	<link rel="stylesheet" href="<?php echo Router::getAsset('css/profile.css') ?>">
+	<link rel="stylesheet" href="<?php echo Router::getAsset('css/alert.css') ?>">
+    <link rel="stylesheet" href="<?php echo Router::getAsset('css/loading.css') ?>">
 
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="../public/javascript/logout.js"></script>
-	<script src="../public/javascript/update.js"></script>
-	<script src="../public/javascript/handle.js"></script>
-	<script src="../public/javascript/upload-avatar.js"></script>
+	<script src="<?php echo Router::getAsset('javascript/logout.js') ?>"></script>
+	<script src="<?php echo Router::getAsset('javascript/update.js') ?>"></script>
+	<script src="<?php echo Router::getAsset('javascript/handle.js') ?>"></script>
+	<script src="<?php echo Router::getAsset('javascript/upload-avatar.js') ?>"></script>
 	
 	<title>Profile</title>
 </head>
 <body>
 	<?php
-		include_once "./models/data/initData.php";
+		include_once "./../models/data/initData.php";
 	
 	?>
 	<div id='alert-wrap' style='display:none'>

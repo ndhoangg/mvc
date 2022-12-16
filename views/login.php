@@ -1,16 +1,20 @@
+<?php
+use app\core\Router;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/login.css">
-    <link rel="stylesheet" href="../public/css/alert.css">
-    <link rel="stylesheet" href="../public/css/loading.css">
+    <link rel="stylesheet" href="<?php echo Router::getAsset('css/login.css') ?>">
+    <link rel="stylesheet" href="<?php echo Router::getAsset('css/alert.css') ?>">
+    <link rel="stylesheet" href="<?php echo Router::getAsset('css/loading.css') ?>">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../public/javascript/login.js"></script>
+    <script src="<?php echo Router::getAsset('javascript/login.js') ?>"></script>
     <title>Login</title>
 </head>
 <body>
@@ -40,7 +44,7 @@
         <div class="left-container">
         <div class="box-wrap">
         <div class="logo">
-            <img src="https://share-gcdn.basecdn.net/brand/logo.full.png" alt="">
+            <img src="<?php echo Router::getAsset('image/logo.png') ?>" alt="">
         </div>
         
         <div class="box">
@@ -104,7 +108,8 @@
    
 
     <div class="banner">
-           <img src="../public/image/background.png" alt="">
+           <img src="<?php echo Router::getAsset('image/background.png') ?>" alt="">
+           
     </div>
     </div>
    

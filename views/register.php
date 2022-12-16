@@ -1,15 +1,17 @@
-
+<?php
+use app\core\Router;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/register.css">
-    <link rel="stylesheet" href="../public/css/alert.css">
-    <link rel="stylesheet" href="../public/css/loading.css">
+    <link rel="stylesheet" href="<?php echo Router::getAsset('css/register.css') ?>">
+    <link rel="stylesheet" href="<?php echo Router::getAsset('css/alert.css') ?>">
+    <link rel="stylesheet" href="<?php echo Router::getAsset('css/loading.css') ?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../public/javascript/register.js"></script>
+    <script src="<?php echo Router::getAsset('javascript/register.js') ?>"></script>
     <title>Register</title>
 
 </head>
@@ -38,7 +40,7 @@
         <div class="left-container">
         <div class="box-wrap">
         <div class="logo">
-            <img src="https://share-gcdn.basecdn.net/brand/logo.full.png" alt="">
+            <img src="<?php echo Router::getAsset('image/logo.png') ?>" alt="">
         </div>
 
         <div class = "register-title">
@@ -110,7 +112,7 @@
    
 
     <div class="banner">
-           <img src="https://static-gcdn.basecdn.net/account/image/background.png" alt="">
+           <img src="<?php echo Router::getAsset('image/background.png') ?>" alt="">
     </div>
     </div>
 
