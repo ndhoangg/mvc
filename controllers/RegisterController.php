@@ -1,7 +1,9 @@
 <?php
 namespace app\controllers;
+use app\util\AjaxResponse;
 use app\core\Controller;
 use app\core\Request;
+use app\util\Validator;
 
     class RegisterController extends Controller{
 
@@ -13,21 +15,36 @@ use app\core\Request;
         public function handleRegister(Request $request){
             $data = $request->getBody();
             $user = $this->userModel->findUserByEmail($data['email']);
-    
-            if(!$data['email']){
-                echo json_encode(["success"=>false,"message"=>"Email is required"]);
-            }       
+            if(!Validator::validateName($data['name'])){
+                $array = ["success"=>false,"message"=>"Invalid Name"];
+                AjaxResponse::ajaxResponse($array);
+            }
+            elseif(!Validator::validateEmail($data['email'])){
+                $array = ["success"=>false,"message"=>"Invalid Email"];
+                AjaxResponse::ajaxResponse($array);
+            }
+           
+            elseif(!$data['email']){
+              
+                $array = ["success"=>false,"message"=>"Email is required"];
+                AjaxResponse::ajaxResponse($array);
+            } 
+
             elseif(!$data['password']){
-                echo json_encode(["success"=>false,"message"=>"Password is required"]);
+                $array = ["success"=>false,"message"=>"Password is required"];
+                AjaxResponse::ajaxResponse($array);
             }
             elseif(!$data['name']){
-                echo json_encode(["success"=>false,"message"=>"Name is required"]);
+                $array = ["success"=>false,"message"=>"Name is required"];
+                AjaxResponse::ajaxResponse($array);
             }
             elseif(!empty($user)){
-                echo json_encode(["success"=>false,"message"=>"Email Already Existed"]);
+                $array = ["success"=>false,"message"=>"Email Already Existed"];
+                AjaxResponse::ajaxResponse($array);
             }
             elseif($data['password'] != $data['passwordconfirm']){
-                echo json_encode(["success"=>false,"message"=>"Wrong Repeat Password"]);
+                $array = ["success"=>false,"message"=>"Wrong Repeat Password"];
+                AjaxResponse::ajaxResponse($array);
             }
             else{
                 $restname = "";
@@ -46,7 +63,7 @@ use app\core\Request;
                     $data['user_name'] = $username;
                     $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
                 $this->userModel->register($data);
-                echo json_encode(["success"=>true]);
+                AjaxResponse::ajaxResponseSuccess();
             }
         } 
             

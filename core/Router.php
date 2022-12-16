@@ -72,8 +72,6 @@ class Router{
         include_once Application::$ROOT_DIR."/mvc/views/$view.php"; 
         return ob_get_clean();
     }
-
-
 }
 
 

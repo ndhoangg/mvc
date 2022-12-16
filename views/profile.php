@@ -7,6 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">\
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 	<link rel="stylesheet" href="../public/css/profile.css">
+	<link rel="stylesheet" href="../public/css/alert.css">
+    <link rel="stylesheet" href="../public/css/loading.css">
 
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -22,11 +24,24 @@
 		include_once "./models/data/initData.php";
 	
 	?>
-	<div id='loading-wrap' style='position:fixed; height:100%; width:100%; overflow:hidden; top:0; left:0; display:none'>
+	<div id='alert-wrap' style='display:none'>
+        <div id='alert'>
+            <div id='alert-close' onclick="$('#alert-wrap').hide()">
+                <span>x</span>
+            </div>
+            <div id='alert-content'>
+                Invalid whatever
+            </div>
+            <div id='alert-button' onclick="$('#alert-wrap').hide()">
+                OK
+            </div>
+        </div>
+    </div>
+    <div id='loading-wrap' style='position:fixed; height:100%; width:100%; overflow:hidden; top:0; left:0; display:none'>
         <div id='loading-message'>
             <div class='loader'>
             </div>
-            <div class='message'></div>
+            <div class='message'>Loading, please wait</div>
         </div>
     </div>
 	<div class="all-page">

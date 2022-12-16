@@ -1,5 +1,7 @@
 <?php
 namespace app\controllers;
+
+use app\util\AjaxResponse;
 use app\core\Controller;
 use app\core\Request;
 use app\models\User;
@@ -18,15 +20,19 @@ use app\models\User;
             $user = $this->userModel->findUserByEmail($data['email']);
          
             if(empty($user)){
-                echo json_encode(["success"=>false,"message"=>"Email Invalid"]);
+                $array = ["success"=>false,"message"=>"Email Invalid"];
+                AjaxResponse::ajaxResponse($array);
             }
             elseif(!password_verify($data["password"],$user->password)){
-             echo json_encode(["success"=>false,"message"=>"Wrong Password!"]);
+
+                $array = ["success"=>false,"message"=>"Wrong Password!"];
+                AjaxResponse::ajaxResponse($array);
+
              }
              else {
                 
-                 $_SESSION['email'] = $user->email;         
-               echo json_encode(["success"=>true]);   
+                 $_SESSION['email'] = $user->email;          
+               AjaxResponse::ajaxResponseSuccess();
              }
                
             }
