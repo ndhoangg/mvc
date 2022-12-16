@@ -16,15 +16,21 @@ $(document).ready(function () {
         //   phone_number: $("input[name='phone_number']").val(),
         //   address: $("input[name='address']").val(),
         // },
-         dataType: "",
+         dataType: "json",
         beforeSend: function () {
            $("#loading-wrap").show();
         },
         success: function (response) {
-           
-              window.location.replace("/profile");
-        
-        }
+          $("#loading-wrap").fadeOut("slow");
+         if (!response.success)
+         {
+           $("#alert-content").text(response.message);
+           $("#alert-wrap").show();
+         }
+         else setTimeout(function() {
+             window.location.replace("/profile");
+         }, 500)
+       }
       });
     });
   });

@@ -1,15 +1,13 @@
 <?php
 namespace app\models;
 use app\core\DB;
-
 class User {
     private $db;
     public function __construct(){
-        $this->db = new DB;
+        $this->db =  DB::getInstance();
     }
 
-
-      //Find user by email or username
+      //Find user by email 
       public  function findUserByEmail($email){
         $this->db->query('SELECT * FROM users WHERE email = :email');
         $this->db->bind(':email', $email);
@@ -72,25 +70,24 @@ class User {
     
         }
         else{
-            $this->db->query('UPDATE users SET first_name=:first_name,last_name=:last_name,job_title=:job_title,date_of_birth=:date_of_birth,phone_number=:phone_number,address=:address WHERE email=:email' );
-        
-        $this->db->bind(':email', $data['email']);
-        $this->db->bind(':first_name', $data['first_name']);
-        $this->db->bind(':last_name', $data['last_name']);
-        $this->db->bind(':job_title', $data['job_title']);
-        $this->db->bind(':date_of_birth', $data['date_of_birth']);
-        $this->db->bind(':phone_number', $data['phone_number']);
-        $this->db->bind(':address', $data['address']);
+            $this->db->query('UPDATE users SET first_name=:first_name,last_name=:last_name,job_title=:job_title,date_of_birth=:date_of_birth,phone_number=:phone_number,address=:address WHERE email=:email' ); 
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':first_name', $data['first_name']);
+            $this->db->bind(':last_name', $data['last_name']);
+            $this->db->bind(':job_title', $data['job_title']);
+            $this->db->bind(':date_of_birth', $data['date_of_birth']);
+            $this->db->bind(':phone_number', $data['phone_number']);
+            $this->db->bind(':address', $data['address']);
         }
         $this->db->execute();
        
     }
 
     public function uploadImage($data){
-        $this->db->query('UPDATE users SET avatar=:avatar WHERE email=:email');
-        $this->db->bind(':avatar', $data['avatar']);
-        $this->db->bind(':email', $_SESSION['email']);
-        $this->db->execute();
+            $this->db->query('UPDATE users SET avatar=:avatar WHERE email=:email');
+            $this->db->bind(':avatar', $data['avatar']);
+            $this->db->bind(':email', $_SESSION['email']);
+            $this->db->execute();
     }
    
 
