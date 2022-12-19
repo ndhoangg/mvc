@@ -1,6 +1,6 @@
-<?php
+<!-- <?php
 use app\core\Router;
-?>
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +13,7 @@ use app\core\Router;
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="<?php echo Router::getAsset('javascript/register.js') ?>"></script>
     <title>Register</title>
-
+      
 </head>
 <body>
 <div id='alert-wrap' style='display:none'>
@@ -55,7 +55,7 @@ use app\core\Router;
             <div class="la-bel">Your Name</div>
     
             <div class="input">
-            <input type="text"  name="name" id="" value="" placeholder="Your Name">
+            <input type="text"  name="name" id="" value="<?= $name ?>" placeholder="Your Name">
             
 
         </div>

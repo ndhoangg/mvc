@@ -1,9 +1,10 @@
 <?php
-namespace app\controllers;
-use app\util\AjaxResponse;
-use app\core\Controller;
-use app\core\Request;
-use app\util\Validator;
+    namespace app\controllers;
+
+    use app\util\AjaxResponse;
+    use app\core\Controller;
+    use app\core\Request;
+    use app\util\Validator;
 
     class RegisterController extends Controller{
 
@@ -12,41 +13,32 @@ use app\util\Validator;
             return $this->render('register'); 
         }
 
+        //Handle Register
         public function handleRegister(Request $request){
             $data = $request->getBody();
             $user = $this->userModel->findUserByEmail($data['email']);
             if(!Validator::validateName($data['name'])){
                 $array = ["success"=>false,"message"=>"Invalid Name"];
                 AjaxResponse::ajaxResponse($array);
-            }
-            elseif(!Validator::validateEmail($data['email'])){
+            } elseif (!Validator::validateEmail($data['email'])){
                 $array = ["success"=>false,"message"=>"Invalid Email"];
                 AjaxResponse::ajaxResponse($array);
-            }
-           
-            elseif(!$data['email']){
-              
+            } elseif (!$data['email']){
                 $array = ["success"=>false,"message"=>"Email is required"];
                 AjaxResponse::ajaxResponse($array);
-            } 
-
-            elseif(!$data['password']){
+            } elseif(!$data['password']){
                 $array = ["success"=>false,"message"=>"Password is required"];
                 AjaxResponse::ajaxResponse($array);
-            }
-            elseif(!$data['name']){
+            } elseif(!$data['name']){
                 $array = ["success"=>false,"message"=>"Name is required"];
                 AjaxResponse::ajaxResponse($array);
-            }
-            elseif(!empty($user)){
+            } elseif(!empty($user)){
                 $array = ["success"=>false,"message"=>"Email Already Existed"];
                 AjaxResponse::ajaxResponse($array);
-            }
-            elseif($data['password'] != $data['passwordconfirm']){
+            } elseif($data['password'] != $data['passwordconfirm']){
                 $array = ["success"=>false,"message"=>"Wrong Repeat Password"];
                 AjaxResponse::ajaxResponse($array);
-            }
-            else{
+            }  else {
                 $restname = "";
                 $namearr = explode(" ",$data['name']);
                     $firstname = $namearr[count($namearr) - 1];
@@ -66,10 +58,5 @@ use app\util\Validator;
                 AjaxResponse::ajaxResponseSuccess();
             }
         } 
-            
-    
-        }
-
-
-
+    }
 ?>
